@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Etudiant create</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="../../templates/layout.xhtml">
+            <ui:define name="body-content"> 
+                <div class="row">
+                    <div class="col-md-12 text-right d-flex justify-content-end">
+                        <a class="btn btn-success" href="#{request.contextPath}/pages/etudiant/list.xhtml">Liste des étudiants</a>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-6 mx-auto">
+                        <h:form>
+                            <div class="form-group">
+                                <label for="name" class="form-label">Nom</label>
+                                <h:inputText id="name" class="form-control" value="#{etudiantBean.etudiant.nom}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstname" class="form-label">Prénoms</label>
+                                <h:inputText id="firstname" class="form-control" value="#{etudiantBean.etudiant.prenoms}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone" class="form-label">Téléphone</label>
+                                <h:inputText id="telephone" class="form-control" value="#{etudiantBean.etudiant.telephone}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <h:inputText id="email" class="form-control" value="#{etudiantBean.etudiant.email}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="form-label">Adresse</label>
+                                <h:inputTextarea id="address" class="form-control" value="#{etudiantBean.etudiant.adresse}"></h:inputTextarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="form-label">Département</label> 
+                                <div class="">
+                                    <p:selectOneMenu id="group" class="w-100" value="#{etudiantBean.selectedDepartementId}">
+                                        <f:selectItems value="#{etudiantBean.departementsSelectOptions}"/>
+                                    </p:selectOneMenu>
+                                </div>
+
+                            </div>
+                            <h:commandButton value="Enrégistrer Etudiant" action="#{etudiantBean.creer()}" class="btn btn-success w-100 mt-3"></h:commandButton>
+                        </h:form>
+                    </div>
+                </div>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+
+</html>

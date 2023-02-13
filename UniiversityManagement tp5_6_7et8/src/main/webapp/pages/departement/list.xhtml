@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Liste des Départements</title>
+    </h:head>
+
+
+    <h:body>
+        <ui:composition template="../../templates/layout.xhtml">
+            <ui:define name="body-content"> 
+                <div class="row">
+                    <div class="col-md-12 text-right d-flex justify-content-end">
+                        <a class="btn btn-success" href="#{request.contextPath}/pages/departement/create.xhtml">Nouveau Departement</a>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-10 mx-auto">
+                        <!--<h:dataTable id="departementsList" var="d" value="#{departementBean.departementsList}" >
+                            <h:column>    				
+                                <f:facet name = "header">Nom Département</f:facet>    				
+                        #{d.nom}
+                </h:column>
+                <h:column>    				
+                    <f:facet name = "header">Adresse Web</f:facet>    				
+                        #{d.adresseWeb}
+                </h:column>
+            </h:dataTable>         -->
+                        <p:dataTable id="etudiantsList" var="d" value="#{departementBean.departementsList}" lazy="false">
+                            <p:column headerText="Nom Département"> 
+                                <h:outputText value="#{d.nom}"/>
+                            </p:column>
+                            <p:column headerText="Adresse Web"> 
+                                <h:outputText value="#{d.adresseWeb}"/>
+                            </p:column>
+                            <p:column headerText="Action"> 
+                                <h:form>
+                                    <h:commandButton  class="btn btn-danger" action="#{departementBean.delete(d.id)}" value="Supprimer" />
+                                    <h:link class="btn btn-primary" value="Modifier" outcome="create" includeViewParams="true">
+                                        <f:param value="#{d.id}" name="departementId" />
+                                    </h:link>
+                                </h:form>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
